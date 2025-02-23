@@ -11,7 +11,8 @@
 *.cb
 *.cb2
 .*.lb
-
+## bash script
+*.sh
 ## Intermediate documents:
 *.dvi
 *.xdv

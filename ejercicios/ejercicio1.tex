@@ -1,0 +1,14 @@
+Dada una gráfica simple $G$, determina su número de subgráficas inducidas y su número de subgráficas inducidas por aristas.
+
+Decimos que una gráfica inducida por $S$ $\displaystyle (G\left[S\right])$ donde $S\subseteq V_G$, tal que, es la gráfica cuyo conjunto de vértices es $S$ y en conjunto de aristas es es $\{uv\in E\big| u,v\in S\}$
+
+En este caso, el número de subgráficas inducidas es el número de potencias de $V_G$ el cual es $2^n$ donde n es $\big|V_G\big|$.
+
+Por lo tanto, el número de subgráficas inducidas de $G$ es $2^{|V(G)|}$.
+
+La prueba es análoga para una subgráfica inducida por aristas.
+
+Decimos que una subgráfica inducida por aristas en $G$ es la gráfica cuyos vértices son los vertices de G tal que son extremos por una arista que vive en $E'\subseteq E_G$
+
+En ese caso las subgráficas posibles son todos los subconjuntos de $E_G$ que es el la cardinalidad del conjunto potencia respecto a $E_G$, esto es $\big|\mathcal{P}_{E_G}=2^n\big|$ donde $n$ es $\big|E_G\big|$
+Por lo tanto, el número de subgráficas inducidas por aristas es $2^{|E(G)|}$.

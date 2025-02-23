@@ -1,0 +1,36 @@
+\label{ej:Petersen} \begin{enumerate}
+    \item Encuentra una gráfica simple $Q$ de orden 10, tamaño 15, regular, que no
+    contenga ciclos inducidos de orden 3 ni 4.
+    \item Demuestra que la gráfica $Q$ del inciso anterior es isomorfa a la
+    gráfica de la Figura \ref{fig:Petersen}.
+  \end{enumerate}
+  \begin{figure}[!hbt]
+	\begin{center}
+		\begin{tikzpicture}
+
+      \begin{scope}[scale=1]
+				\foreach \i in {0,...,4}
+					\node [vertex] (\i) at ({90+(\i*72)}:2)[label={35+(\i*72)}:$v_\i$]{};
+				\foreach \i in {5,...,9}
+					\node [vertex] (\i) at ({90+(\i*72)}:1)[label={35+(\i*72)}:$v_\i$]{};
+
+        \foreach \i in {0,...,4} {
+					\draw let \n1={int(mod(\i+1,5))} in [edge] (\i) to (\n1);
+					\draw let \n1={int(\i+5)} in [edge] (\i) to (\n1);
+        }
+					
+        \foreach \i in {5,6,7} {
+					\draw let \n1={int(\i+2)} in [edge] (\i) to (\n1);
+        }
+					
+				\foreach \i/\j in {9/6,8/5}
+					\draw [edge] (\i) to node{} (\j);
+
+			\end{scope}
+
+		\end{tikzpicture}
+	\end{center}
+	\caption{La gráfica del ejercicio \ref{ej:Petersen}.}
+	\label{fig:Petersen}
+\end{figure}
+  
