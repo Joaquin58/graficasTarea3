@@ -1,0 +1,11 @@
+Demuestra que la propiedad ''es bipartita'' es una propiedad hereditaria de las gráficas.
+
+Sea $G$ una gráfica simple bipartita, entonces acepta particiones $(X,Y)$ tales que $X \text{ y } Y$ son independientes; y sea $S$ un subconjunto de los vértices de $G$, entonces tenemos los siguientes casos.
+
+Si $S\subseteq X$ donde $X\neq\varnothing$: es claro que todos los vértices de $G\left[S\right]$ son independientes por definición de conjunto independiente de $X$ pues no hay arístas que conecten a los vértices $u,v\in X$ y por definición $S$ contine las aristas de las adyacencias de $u,v$ pero como no hay ninguna se tiene que $E_S=\varnothing$ por lo que $G\left[S\right]$ acepta biparticiones pues todos los vértices son independientes. 
+
+Si $S\subseteq Y$: es análogo para al anterior ya que $Y$ también es un conjunto independiente, entonce los vértices de $S$ son independientes y $G\left[S\right]$, por lo que $G\left[S\right]$ es independiente.
+
+Si $S\subseteq X\cup Y$, es claro que $S_X:=S\cap X$ es una bipartición de $S$ pues los vértices que viven en él son independientes, i.e., si $u,v\in S_X$ entonces $uv\in E_{S_X}$ pero $u,v$ son independientes entre sí por lo que no hay aristas que los incidan, por lo que $uv\notin E_{S_X}$ lo que implica que $uv\notin E_G$ y lo mismo pasa para $S_Y:=S\cap Y$, por lo que ($S_X, S_Y$) es una bipartición de $G$ pues se tiene que si $u,v\in S_X$ y $x,y\in S_Y$ implica que $uv\notin S_X$ y $xy\notin S_Y$ por lo que $uv,xy\notin E_G$ y todas las aristas en $G\left[S\right]$ son adtyacentes entre vértices de $S_X$ y $S_Y$, lo que implica que $G\left[S\right]$ sea bipartita, pues se puede dividir en los subconjuntos independientes $S_X,S_Y$.
+
+Entonces la bipartición es hereditaria. $\blacksquare$
