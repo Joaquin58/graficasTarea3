@@ -4,13 +4,18 @@ Sea $G$ una gráfica.
 
           Recordemos que un ciclo es un circuito que no repite vértices salvo el primero que es igual al último y una gráfica inducida es una subgráfica que contiene todos los vértices de $C$ y todas las aristas de $G$ que conectan los vértices de $C$.
 
-          \textbf{Por contrapuesta.}
+            %\textbf{no necesario leer}-- (si tenemos un ciclo c que no es inducido por vertices, quiere decir que no contiene las aristas correspondientes que existen en G, basta encontrar una arista de dos vértices no consecutivos de C que existe en G pero que no existe en C, esto pasa porque G al ser  gráfica simple entonces la arista faltante no es arista múltiple o un lazo, por lo que la arista tiene que incidir a dos vertices no consecutivos en G; esta arista que vive en G haría más pequeño el ciclo ya que lo atraviesa generando un ciclo más corto, entonces el ciclo C' que si tiene esa arista faltante es G[C'] y es de longitud más prqueña que C, lo que implica que si C no es inducido entonces no es el más pequeño, lo que es equivalente a decir que si c es un ciclo más pequeño entonces es inducido por vértices.)--
 
-          Sea $G$ un agráfica simple y $C=\{v_1,v_2,\cdots,v_n,v_1\}$ un ciclo de longitud mínima $n$ contenida en $G$, Si $C$ no es una subgráfica inducida por vértices de $G$, entonces $C$ no es de longitud mínima.
-          
-           Como $C$ no es inducida por vértices existe una arista $uv\in E_G$ tal que $uv\notin E_C$ donde $u=v_i, v=v_j$ para $i<j,j\neq i+1$. Como $u,v$ no son cosecutivos se puede divir $C$ en dos caminos, $C1$ el primer camino que va de $\{v_i,v_{i+1},\cdots,v_j\}$ a lo largo de $C$ y $C_2=\{v_j,v_{j+1},\cdots,v_n,v_1,\cdots,v_i\}$ entonces tenemos la concatenación $C=C_1C_2$.  Notemos que $l(C_1)=j-i,\;l(C_2)=n-(j-i)$; si concatenamos la arista $uv$ en $C$, esto es $C'=v_i,uv,v_jC_2v_i$ y la longitud es $l=C_2+1$ lo que generaría un ciclo más corto pues $l(C)=n-(j-i)+j-i$ pero $j-i\geq2$ y como $1<2$ entonces $l(C')=n-(j-i)+1<n-(j-i)+j-i=C$, lo que contradice a la suposición de que $C$ es el camino más corto pues $C'$ es un ciclo más corto que $C$.
-          Por lo tanto, cada ciclo de longitud mínima en $G$ es una subgráfica inducida por vértices
+          \textbf{Dem:} Por contrapuesta.
 
+          Sea $G$ un agráfica simple y $C=\{v_1,v_2,\cdots,v_n,v_1\}$ un ciclo en $G$, si $C$ no es una subgráfica inducida por vértices de $G$, entonces $C$ no es de longitud mínima.
+
+          Como $C$ no es inducida por vértices, por definción de ser gráfica inducida por vértices existe una arista $uv\in E_G$ tal que $uv\notin E_C$ para $u,v$ no consecutivos, esto pasa por definción de $G$, al ser simple la arista faltante no es arista múltiple o un lazo, por lo que la arista tiene que incidir a dos vertices no consecutivos en G.
+
+          Entonces se puede divir $C$ en dos ciclos, en particular el ciclo $C'$ que está formado por la arista que vive en $G$ que atraviesa el ciclo $C$ ya que une los vértices $u,v$, lo que la combierte en un ciclo más pequeño que $C$. Esto implica que si el ciclo $C$ no es inducido entonces no es de longitud mínima, lo que es equivalente a decir que si $C$ es un ciclo más pequeño entonces es inducido por vértices.
+
+
+          %   Como $C$ no es inducida por vértices existe una arista $uv\in E_G$ tal que $uv\notin E_C$ donde $u=v_i, v=v_j$ para $i<j,j\neq i+1$. Como $u,v$ no son cosecutivos se puede divir $C$ en dos caminos, $C1$ el primer camino que va de $\{v_i,v_{i+1},\cdots,v_j\}$ a lo largo de $C$ y $C_2=\{v_j,v_{j+1},\cdots,v_n,v_1,\cdots,v_i\}$ entonces tenemos la concatenación $C=C_1C_2$.  Notemos que $l(C_1)=j-i,\;l(C_2)=n-(j-i)$; si concatenamos la arista $uv$ en $C$, esto es $C'=v_i,uv,v_jC_2v_i$ y la longitud es $l=C_2+1$ lo que generaría un ciclo más corto pues $l(C)=n-(j-i)+j-i$ pero $j-i\geq2$ y como $1<2$ entonces $l(C')=n-(j-i)+1<n-(j-i)+j-i=C$, $C'$ es un ciclo más corto que $C$.
     \item Prueba que lo anterior no es necesariamente cierto si $G$ no es simple.
           Daremos un contrajemplo.
 
@@ -29,13 +34,15 @@ Sea $G$ una gráfica.
                           \draw [edge] (2) to node[label=0:$e_2$]{} (0);
                           \draw [edge,bend right=30] (3) to node[label=270:$e_3$]{} (1);
                           \draw [edge] (3) to node[label=90:$e_4$]{} (0);
-                          \draw [edge, bend left=50] (3) to node[label=90:$e_5$]{} (1);                          
+                          \draw [edge, bend left=50] (3) to node[label=90:$e_5$]{} (1);
                           \draw [myloop,in=180,out=120,looseness=45] (1) to node[label=115:$e_{6}$]{} (1);
+                          \draw [myloop,in=180,out=240,looseness=45] (1) to node[label=115:$e_{7}$]{} (1);
                       \end{scope}
                   \end{tikzpicture}
               \end{center}
               \caption{contrajemplo.}
           \end{figure}
 
-          Notemos el ciclo $C=\{v_0,e_5,v_3,e_3,v_1\}$ de longitud minima 2 y como para que C sea una subgráfica inducida por G $(G\left[C\right])$ debe ocurrir que $E_C$ contenga todas las aristas de $G$ que une a los vertices en $V_c$ pero vemos que esto no pasa porque el lazo $e_6\notin E_C$ por lo que no es una subgráfica inducida por vértices.
+          Notemos el ciclo $C=\{v_1,e_6,v_1\}$ de longitud minima 1 y como para que C sea una subgráfica inducida por G $(G\left[C\right])$ debe ocurrir que $E_C$ contenga todas las aristas de $G$ que une a los vertices en $V_C$ pero vemos que esto no pasa porque el lazo $e_7\notin E_C$ pero $e_7\in E_G$ por lo que no es una subgráfica inducida por vértices.
+
 \end{enumerate}
