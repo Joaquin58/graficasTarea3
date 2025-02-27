@@ -4,18 +4,55 @@ Sea $G$ una gráfica.
 
           Recordemos que un ciclo es un circuito que no repite vértices salvo el primero que es igual al último y una gráfica inducida es una subgráfica que contiene todos los vértices de $C$ y todas las aristas de $G$ que conectan los vértices de $C$.
 
-            %\textbf{no necesario leer}-- (si tenemos un ciclo c que no es inducido por vertices, quiere decir que no contiene las aristas correspondientes que existen en G, basta encontrar una arista de dos vértices no consecutivos de C que existe en G pero que no existe en C, esto pasa porque G al ser  gráfica simple entonces la arista faltante no es arista múltiple o un lazo, por lo que la arista tiene que incidir a dos vertices no consecutivos en G; esta arista que vive en G haría más pequeño el ciclo ya que lo atraviesa generando un ciclo más corto, entonces el ciclo C' que si tiene esa arista faltante es G[C'] y es de longitud más prqueña que C, lo que implica que si C no es inducido entonces no es el más pequeño, lo que es equivalente a decir que si c es un ciclo más pequeño entonces es inducido por vértices.)--
+          %\textbf{no necesario leer}-- (si tenemos un ciclo c que no es inducido por vertices, quiere decir que no contiene las aristas correspondientes que existen en G, basta encontrar una arista de dos vértices no consecutivos de C que existe en G pero que no existe en C, esto pasa porque G al ser  gráfica simple entonces la arista faltante no es arista múltiple o un lazo, por lo que la arista tiene que incidir a dos vertices no consecutivos en G; esta arista que vive en G haría más pequeño el ciclo ya que lo atraviesa generando un ciclo más corto, entonces el ciclo C' que si tiene esa arista faltante es G[C'] y es de longitud más prqueña que C, lo que implica que si C no es inducido entonces no es el más pequeño, lo que es equivalente a decir que si c es un ciclo más pequeño entonces es inducido por vértices.)--
 
           \textbf{Dem:} Por contrapuesta.
 
-          Sea $G$ un agráfica simple y $C=\{v_1,v_2,\cdots,v_n,v_1\}$ un ciclo en $G$, si $C$ no es una subgráfica inducida por vértices de $G$, entonces $C$ no es de longitud mínima.
+          Sea $G$ un agráfica simple y $C=(v_1,v_2,\cdots,v_n,v_1)$ un ciclo en $G$, si $C$ no es una subgráfica inducida por vértices de $G$, entonces $C$ no es de longitud mínima.
 
-          Como $C$ no es inducida por vértices, por definción de ser gráfica inducida por vértices existe una arista $uv\in E_G$ tal que $uv\notin E_C$ para $u,v$ no consecutivos, esto pasa por definción de $G$, al ser simple la arista faltante no es arista múltiple o un lazo, por lo que la arista tiene que incidir a dos vertices no consecutivos en G.
+          Como $C$ no es inducida por vértices, por definición de ser gráfica inducida por vértices existe una arista $uv\in E_G$ tal que $uv\notin E_C$ para $u,v$ no consecutivos, esto pasa por definición de $G$, al ser simple la arista faltante no es arista múltiple o un lazo, por lo que la arista tiene que incidir a dos vertices no consecutivos en G.
 
-          Entonces se puede divir $C$ en dos ciclos, en particular el ciclo $C'$ que está formado por la arista que vive en $G$ que atraviesa el ciclo $C$ ya que une los vértices $u,v$, lo que la combierte en un ciclo más pequeño que $C$. Esto implica que si el ciclo $C$ no es inducido entonces no es de longitud mínima, lo que es equivalente a decir que si $C$ es un ciclo más pequeño entonces es inducido por vértices.
+          Tomese el siguiente ejemplo.
+          \begin{figure}[!hbt]
+            \begin{center}
+                \begin{tikzpicture}
+                    \begin{scope}[xshift=-3cm, yshift = 0cm, scale=1]
+                        \foreach \i in {0,...,4}
+                        \node [vertex] (\i) at ({90+(\i*72)}:1)[label={90+(\i*72)}:$v_\i$]{};
+                        \foreach \i/\j in {0/1,0/2, 1/2, 2/3, 3/4, 4/0}
+                        \draw [edge] (\i) to node{} (\j);
+                        \node[rectangle] (n) at (1.5,0)[]{$G$};
+                    \end{scope}
+                    \begin{scope}[xshift=.5cm, yshift = 0cm, scale=1]
+                        \foreach \i in {0,...,4}
+                        \node [vertex] (\i) at ({90+(\i*72)}:1)[label={90+(\i*72)}:$v_\i$]{};
 
+                        \foreach \i/\j in {0/1, 1/2, 2/3, 3/4, 4/0}
+                        \draw [edge] (\i) to node{} (\j);
+                        \node[rectangle] (n) at (1.5,0)[]{$C$};
+                    \end{scope}
+                    \begin{scope}[xshift=4.5cm, yshift = 0cm, scale=1]
+                        \foreach \i in {0,...,2}
+                        \node [vertex] (\i) at ({90+(\i*72)}:1)[label={90+(\i*72)}:$v_\i$]{};
 
-          %   Como $C$ no es inducida por vértices existe una arista $uv\in E_G$ tal que $uv\notin E_C$ donde $u=v_i, v=v_j$ para $i<j,j\neq i+1$. Como $u,v$ no son cosecutivos se puede divir $C$ en dos caminos, $C1$ el primer camino que va de $\{v_i,v_{i+1},\cdots,v_j\}$ a lo largo de $C$ y $C_2=\{v_j,v_{j+1},\cdots,v_n,v_1,\cdots,v_i\}$ entonces tenemos la concatenación $C=C_1C_2$.  Notemos que $l(C_1)=j-i,\;l(C_2)=n-(j-i)$; si concatenamos la arista $uv$ en $C$, esto es $C'=v_i,uv,v_jC_2v_i$ y la longitud es $l=C_2+1$ lo que generaría un ciclo más corto pues $l(C)=n-(j-i)+j-i$ pero $j-i\geq2$ y como $1<2$ entonces $l(C')=n-(j-i)+1<n-(j-i)+j-i=C$, $C'$ es un ciclo más corto que $C$.
+                        \foreach \i/\j in {0/1,0/2, 1/2, 2/0}
+                        \draw [edge] (\i) to node{} (\j);
+                        \node[rectangle] (n) at (0.5,0)[]{$C'$};
+                    \end{scope}
+                    \begin{scope}[xshift=6cm, yshift = 0cm, scale=1]
+                        \foreach \i in {2,3,4,0}
+                        \node [vertex] (\i) at ({-120+((\i-2)*72)}:1)[label={90+(\i*72)}:$v_\i$]{};
+
+                        \foreach \i/\j in {2/3,3/4, 4/0, 0/2}
+                        \draw [edge] (\i) to node{} (\j);
+                        \node[rectangle] (n) at (1.5,0)[]{$C''$};
+                    \end{scope}
+                \end{tikzpicture}
+            \end{center}
+        \end{figure}
+
+          Entonces se puede divir a $G$ en dos ciclos, en particular el ciclo $C'=(v_0,v_1,v_2,v_0)$ que está formado por la arista $v_0v_2$ que vive en $G$ y que no vive en $C$, lo que la combierte en un ciclo de longitud más corto que la longitud de $C$. Esto implica que si el ciclo $C$ no es inducido entonces no es de longitud mínima, lo que es equivalente a decir que si $C$ es un ciclo más pequeño entonces es inducido por vértices.
+          
     \item Prueba que lo anterior no es necesariamente cierto si $G$ no es simple.
           Daremos un contrajemplo.
 
@@ -25,24 +62,18 @@ Sea $G$ una gráfica.
                   \begin{tikzpicture}
 
                       \begin{scope}[scale=2, xshift=0cm, yshift = 0cm]
-                          \foreach \i in {0,...,2}
-                          \node [vertex] (\i) at ({90+(\i*120)}:1)[label={90+(\i*120)}:$v_\i$]{};
-                          \node [vertex] (3) at (0,-1)[label=225:$v_3$]{};
+                        %   \node [vertex] (1) at (210:2)[label=210:$v_4$]{};
+                          \node [vertex] (1) at (0,-1)[label=270:$v_1$]{};
 
-                          \draw [edge] (0) to node[label=90*2:$e_0$]{} (1);
-                          \draw [edge] (2) to node[label=270:$e_1$]{} (3);
-                          \draw [edge] (2) to node[label=0:$e_2$]{} (0);
-                          \draw [edge,bend right=30] (3) to node[label=270:$e_3$]{} (1);
-                          \draw [edge] (3) to node[label=90:$e_4$]{} (0);
-                          \draw [edge, bend left=50] (3) to node[label=90:$e_5$]{} (1);
-                          \draw [myloop,in=180,out=120,looseness=45] (1) to node[label=115:$e_{6}$]{} (1);
-                          \draw [myloop,in=180,out=240,looseness=45] (1) to node[label=115:$e_{7}$]{} (1);
+                        %   \draw [edge,bend right=30] (3) to node[label=270:$e_3$]{} (1);
+                        %   \draw [edge, bend left=50] (3) to node[label=90:$e_5$]{} (1);
+                          \draw [myloop,in=30,out=-30,looseness=45] (1) to node[label=10:$e_{1}$]{} (1);
+                          \draw [myloop,in=150,out=210,looseness=45] (1) to node[label=100:$e_{2}$]{} (1);
                       \end{scope}
                   \end{tikzpicture}
               \end{center}
               \caption{contrajemplo.}
           \end{figure}
 
-          Notemos el ciclo $C=\{v_1,e_6,v_1\}$ de longitud minima 1 y como para que C sea una subgráfica inducida por G $(G\left[C\right])$ debe ocurrir que $E_C$ contenga todas las aristas de $G$ que une a los vertices en $V_C$ pero vemos que esto no pasa porque el lazo $e_7\notin E_C$ pero $e_7\in E_G$ por lo que no es una subgráfica inducida por vértices.
-
+          Notemos el ciclo $C=(v_1,e_6,v_1)$ de longitud minima 1 y para que $C$ sea una subgráfica inducida por vertices de G debe ocurrir que $E_C$ contenga todas las aristas de $G$ que une a los vertices en $V_C$ pero vemos que esto no pasa porque el lazo $e_7\notin E_C$ pero $e_7\in E_G$ por lo que no es una subgráfica inducida por vértices.
 \end{enumerate}

@@ -1,12 +1,18 @@
 Sea $G$ una gráfica con $V_G = \{v_1, v_2, \dots ,v_n\}$, y sea $A$ su matriz de adyacencia asociada a dicho ordenamiento de $V_G$. Demuestra que, para cada entero no negativo $k$, el número de $v_iv_j-caminos$ de longitud $k$ es $(A^k)_{i,j}$
 
 Sea $A=(a_{ij})\in M_{n\times n}{(\mathbb{R})}$ una matriz de adyacencia asociada al ordenamiento de la gráfica G.
-Lo demostraremos por inducción fuerte.
 
-\textbf{Casos Base:} $k=1$, que es la longitud del $v_iv_j-camino$, este existe si y solo si $v_iv_j\in E_G$ pero esto está dado por la matriz de adyacencia asociada que es $A$ y como sabemos que una potencia de matrices se define recursivamente como $A^k=A\cdot A^{k-1}$, sustituyendo $A^1=A\cdot A^{1-1}=A\cdot I_A=A$ porque la matriz de adyacencias es una matriz cuadrada. Entonces se tiene que la longitud del $v_iv_j-camino$ de longitud $k=1$ es la matriz de adyacencias $A$.
+Lo demostraremos por inducción.
 
-\textbf{Hipótesis de inducción:} Nosostros afirmamos que para todo entero $n<k$ no negativo es verdad que el número de $v_iv_j-camino$ de longitud $n$ es $A^{n}=(a_{il})=$.
+\textbf{Casos Base:} $k=1$, que es la longitud del $v_iv_j-camino$, este existe si y solo si $v_iv_j\in E_G$ pero esto está dado por la matriz de adyacencia asociada a la gráfica $G$ que es $(A)_{i,j}$ por definción.
 
-\textbf{Paso inductivo:} Por demostrar que se cumple para $k$
-Sabemos que la potencia de una matriz de define recursivamente como $A^k=A^{k-1}_{i,l}\cdot A_{lj}$, pero por hipótesis de inducción el número de caminos de $n$ desde $v_i$ a $v_l$ es $A^{k-1}=A^{n}=(a_{il})$ donde $A^{n}_{il}$ cuenta de los caminos de longitud $n$ desde $v_i$ hasta $v_l$ y donde $A_{lj}$ existe si y solo si es igual a $1$ por lo que indica la posibilidad de moverse de $v_l$ a $v_j$ en al menos un paso, i.e $\{v_0,v_1,\dots,v_l,v_j\}$. 
-Por definción de la multiplicación, Número de caminos de longitud $k$ desde  $v_i$ hasta  $v_j$ es $(A^{n}_{il}\cdot A_{lj}) =\sum_{l=1}^{m} (A^{n})_{i,l} \cdot A_{l,j} = (A^k)_{ij}$
+\textbf{Hipótesis de inducción:} Nosostros afirmamos que para todo entero $k=n$ no negativo es verdad que el número de $v_iv_j-camino$ de longitud $n$ es $(A^k)_{i,j}$.
+
+\textbf{Paso inductivo:} Por demostrar que se cumple para $n+1$.
+Probemos que el número de $v_iv_j-camino$ de longitud $n+1$ es $(A^k)_{i,j}$
+
+Notemos que $A^{n+1}=A\cdot A^n$ , por hipótesis de inducción el número de caminos de $n$ desde $v_i$ a $v_l$  es $\displaystyle(A^{n}\cdot A) =\sum_{l=1}^{m} (A^{n})_{i,l} \cdot (A)_{l,j}$.
+
+donde $(A^{n})_{i,l}$ cuenta de los caminos de longitud $n$ desde $v_i$ hasta $v_l$ y donde $(A)_{l,j}$ es el número de caminos que existen entre $v_l$ y $v_j$ y aporta en almenos 1 valor a la longitud del camino, dicho de otro modo indica la posibilidad de moverse de $v_l$ a $v_j$ en al menos un paso, i.e $(v_0,v_1,\dots,v_l,v_j)$. 
+
+Por lo tanto el número de caminos de longitud $k+1$ desde $v_{i}$ hasta $v_j$ es $(A^k)_{i,j}$.
